@@ -12,6 +12,7 @@ include_once('app.php');
     <script src="js/bootstrap/bootstrap.min.js" defer></script>
     <script src="controllers/paisController.js" type="text/javascript" defer></script>
     <script src="controllers/tipoController.js" type="text/javascript" defer></script>
+    
     <title>SGAV</title>
 </head>
 <body>
