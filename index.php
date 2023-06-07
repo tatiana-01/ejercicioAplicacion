@@ -1,5 +1,6 @@
 <?php 
 include_once('app.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,8 @@ include_once('app.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <script src="js/bootstrap/bootstrap.min.js" defer></script>
-    <script src="js/procesarfactura.js" defer></script>
+    <script src="controllers/paisController.js" type="text/javascript" defer></script>
+    <script src="controllers/tipoController.js" type="text/javascript" defer></script>
     <title>SGAV</title>
 </head>
 <body>
@@ -29,7 +31,7 @@ include_once('app.php');
             Sorry, your browser does not support inline SVG.
         </svg>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,14 +49,57 @@ include_once('app.php');
             <a class="nav-link" href="#">Ciudades</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link">Tipos de viviendas</a>
+            <a class="nav-link" href="#">Tipos de viviendas</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link">Viviendas</a>
+            <a class="nav-link" href="#">Viviendas</a>
             </li>
         </ul>
-        </div>
+        </div> -->
     </div>
     </nav>
+    <div class="container mt-5" style="margin-left: 0;">
+
+        <div class="d-flex align-items-start">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-paises" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Paises</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-regiones" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Regiones</button>
+                <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ciudades" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false" >Ciudades</button>
+                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tipo" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Tipos de viviendas</button>
+                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-viviendas" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Viviendas</button>
+                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-personas" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Personas</button>
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-paises" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                <form action="" id="formCountry">
+                    <div class="input-group">
+                        <span class="input-group-text">Nombre Pais</span>
+                        <input type="text" aria-label="First name" class="form-control" name="name_country">
+                    </div>
+                    <div class="input-group">
+                        <button type="submit" class="btn">Enviar</button>
+                    </div>
+                </form>
+                </div>
+                <div class="tab-pane fade" id="v-pills-regiones" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0"></div>
+                <div class="tab-pane fade" id="v-pills-ciudades" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">                </div>
+                <div class="tab-pane fade" id="v-pills-tipo" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+                    <form action="" id="formHousetype">
+                        <div class="input-group">
+                            <span class="input-group-text">Nombre tipo de vivienda</span>
+                            <input type="text" aria-label="First name" class="form-control" name="name_housetype">
+                        </div>
+                        <div class="input-group">
+                            <button type="submit" class="btn">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="v-pills-viviendas" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="v-pills-personas" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">...</div>
+            </div>
+        </div>
+
+    </div>
+
 </body>
 </html>

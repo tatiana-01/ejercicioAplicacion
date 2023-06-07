@@ -1,6 +1,10 @@
 <?php 
     require_once 'vendor/autoload.php';
     use App\Database;
-    $db = new Database;
+    use Models\Paises;
+    use Models\Tipos;
+    $db = new Database();
     $conn = $db->getConnection('mysql');
+    Paises::setConn($conn);
+    Tipos::setConn($conn);
 ?>

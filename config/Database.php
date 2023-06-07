@@ -7,7 +7,7 @@
                 'driver' => 'mysql',
                 'host' => 'localhost',
                 'username' => 'campus',
-                'database' => 'sgavapp',
+                'database' => 'sgav',
                 'password' => 'campus2023',
                 'collation' => 'utf8mb4_unicode_ci',
                 'flags' => [
@@ -51,6 +51,7 @@
             $this->conn = null;
             $dsn = "{$dbConfig['driver']}:host={$dbConfig['host']};dbname={$dbConfig['database']}";
             try{
+                echo 'hola';
                 $this->conn = new \PDO($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['flags']);
                 echo 'ok';
             }catch(\PDOException $exception){
