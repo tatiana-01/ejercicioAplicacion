@@ -7,7 +7,7 @@
                 'driver' => 'mysql',
                 'host' => 'localhost',
                 'username' => 'campus',
-                'database' => 'sgav',
+                'database' => 'sgavapp',
                 'password' => 'campus2023',
                 'collation' => 'utf8mb4_unicode_ci',
                 'flags' => [
