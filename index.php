@@ -1,11 +1,18 @@
 <?php 
+ini_set("display_errors",1);
+ini_set("display_startup_errors",1);
+error_reporting(E_ALL);
+
 include_once('app.php');
 use Models\Paises;
 use Models\Regiones;
 $obj = new Paises;
 $obj1=new Regiones();
 $paises=$obj->loadAllData();
+$_valor = json_decode(file_get_contents("php://input"), true);
+ echo var_dump($_valor);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +22,8 @@ $paises=$obj->loadAllData();
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/bootstrap/bootstrap.min.js" defer></script>
-    <script src="controllers/paisController.js" type="text/javascript" defer></script>
-    
-    <script src="controllers/regionController.js" type="text/javascript" defer></script>
-    <script src="controllers/ciudadController.js" type="text/javascript" defer></script>
+
+
     
     
     <title>SGAV</title>
@@ -136,19 +141,17 @@ $paises=$obj->loadAllData();
                             <span class="input-group-text ">Region</span>
                             <select name="id_region" class="form-select"  id="selectRegion">
                             <?php 
-                                    echo $_GET['valor'];
-                                    if(isset($_GET['valor'])){
-                                        $valor=$_GET['valor'];
-                                        echo $valor;
-                                        $regiones=$obj1->loadDataById($valor);
+                                   
+                                        /* $valor=$idSelect;
+                                        echo $valor; */
+                                        $regiones=$obj1->loadDataById(intval($valor));
                                         foreach ($regiones as $value) {
                                             echo "<option value='$value[id_region]'>".$value['name_region']."</option>";
                                         }
-                                    }
-
                                 ?>
                             </select>
                         </div>
+                        <?php echo var_dump($_GET['valor']);?>
                         <div class="input-group">
                             <button type="submit" class="btn btn-info">Enviar</button>
                         </div>
@@ -174,8 +177,11 @@ $paises=$obj->loadAllData();
             </div>
         </div>
 
-    </div>
-    <script src="controllers/tipoController.js" type="text/javascript" ></script>
+    </div>    
+    <script src="controllers/paisController.js" type="text/javascript" ></script>
+        <script src="controllers/regionController.js" type="text/javascript" ></script>
+    <script src="controllers/ciudadController.js" type="text/javascript" ></script>
     <script src="controllers/selectRegion.js" type="text/javascript" ></script>
+    <script src="controllers/tipoController.js" type="text/javascript" ></script>
 </body>
 </html>

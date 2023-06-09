@@ -3,7 +3,7 @@
         'name' => 'apolm01-033/ejercicio-aplicacion',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd44dcd72f8a343497a20897047317a92e7290773',
+        'reference' => '6f5b8fcf80073d529bb60816b462ef2fae08451a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'apolm01-033/ejercicio-aplicacion' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd44dcd72f8a343497a20897047317a92e7290773',
+            'reference' => '6f5b8fcf80073d529bb60816b462ef2fae08451a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
