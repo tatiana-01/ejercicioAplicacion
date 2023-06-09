@@ -28,6 +28,14 @@
             $regions= $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $regions;
         }
+        public function loadDataById($idSelect){
+            $sql = "SELECT id_region,name_region,id_country FROM regions WHERE id_country=$idSelect";
+            $stmt= self::$conn->prepare($sql);
+            //$stmt->setFetchMode(\PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $regions= $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $regions;
+        }
         public static function setConn($connBd){
             self::$conn = $connBd;
         }

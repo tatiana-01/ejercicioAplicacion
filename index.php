@@ -5,9 +5,6 @@ use Models\Regiones;
 $obj = new Paises;
 $obj1=new Regiones();
 $paises=$obj->loadAllData();
-$regiones=$obj1->loadAllData();
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +16,10 @@ $regiones=$obj1->loadAllData();
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/bootstrap/bootstrap.min.js" defer></script>
     <script src="controllers/paisController.js" type="text/javascript" defer></script>
-    <script src="controllers/tipoController.js" type="text/javascript" defer></script>
+    
     <script src="controllers/regionController.js" type="text/javascript" defer></script>
     <script src="controllers/ciudadController.js" type="text/javascript" defer></script>
+    
     
     <title>SGAV</title>
 </head>
@@ -126,7 +124,7 @@ $regiones=$obj1->loadAllData();
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text ">Pais</span>
-                            <select  class="form-select"  id="">
+                            <select  class="form-select"  id="selectCountry">
                             <?php 
                                     foreach ($paises as $value) {
                                         echo "<option value='$value[id_country]'>".$value['name_country']."</option>";
@@ -136,11 +134,18 @@ $regiones=$obj1->loadAllData();
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text ">Region</span>
-                            <select name="id_region" class="form-select"  id="">
+                            <select name="id_region" class="form-select"  id="selectRegion">
                             <?php 
-                                    foreach ($regiones as $value) {
-                                        echo "<option value='$value[id_region]'>".$value['name_region']."</option>";
+                                    echo $_GET['valor'];
+                                    if(isset($_GET['valor'])){
+                                        $valor=$_GET['valor'];
+                                        echo $valor;
+                                        $regiones=$obj1->loadDataById($valor);
+                                        foreach ($regiones as $value) {
+                                            echo "<option value='$value[id_region]'>".$value['name_region']."</option>";
+                                        }
                                     }
+
                                 ?>
                             </select>
                         </div>
@@ -164,12 +169,13 @@ $regiones=$obj1->loadAllData();
                 </div>
 
 
-                <div class="tab-pane fade" id="v-pills-viviendas" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">...</div>
+                <div class="tab-pane fade" id="v-pills-viviendas" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">hola</div>
                 <div class="tab-pane fade" id="v-pills-personas" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">...</div>
             </div>
         </div>
 
     </div>
-
+    <script src="controllers/tipoController.js" type="text/javascript" ></script>
+    <script src="controllers/selectRegion.js" type="text/javascript" ></script>
 </body>
 </html>
