@@ -6,9 +6,9 @@
             "mysql"=> Array(
                 'driver' => 'mysql',
                 'host' => 'localhost',
-                'username' => 'campus',
-                'database' => 'sgavapp',
-                'password' => 'campus2023',
+                'username' => 'root',
+                'database' => 'svagapp',
+                'password' => '',
                 'collation' => 'utf8mb4_unicode_ci',
                 'flags' => [
                     // Turn off persistent connections
@@ -51,9 +51,9 @@
             $this->conn = null;
             $dsn = "{$dbConfig['driver']}:host={$dbConfig['host']};dbname={$dbConfig['database']}";
             try{
-                echo 'hola';
+                
                 $this->conn = new \PDO($dsn, $dbConfig['username'], $dbConfig['password'], $dbConfig['flags']);
-                echo 'ok';
+                
             }catch(\PDOException $exception){
                 $error=[[
                     'error' => $exception->getMessage(),

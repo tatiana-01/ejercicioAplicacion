@@ -1,3 +1,4 @@
+
 let myformReg = document.querySelector("#formRegions"); //seleccionamos el formulario
 let myHeadersReg = new Headers({ "Content-Type": "application/json" }) //creamos el header que vamos a incluir en el fetch
 

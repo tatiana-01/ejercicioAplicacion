@@ -36,7 +36,8 @@
             //$stmt->setFetchMode(\PDO::FETCH_ASSOC);
             $stmt->execute();
             $regions= $stmt->fetchAll(\PDO::FETCH_ASSOC);
-            return $regions;
+            $json_regiones=json_encode($regions);
+            echo $json_regiones;
         }
         public static function setConn($connBd){
             self::$conn = $connBd;

@@ -25,8 +25,38 @@
             $countries = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $countries;
         }
+        public function deleteByIdData($id){
+            $response=[];
+            $sql = "DELETE FROM countries WHERE id_country = :id_country";
+            $stmt= self::$conn->prepare($sql);
+            $stmt->bindParam(':id_country', $id, \PDO::PARAM_INT); 
+            $stmt->execute();
+            if ($stmt->rowCount()>0){
+                $response=[[
+                    'mensaje' => 'El registro fue eliminado correctamente',
+                    'codEstado' => '200',
+                    'totalreg' => $stmt->rowCount()
+                ]];
+            }else{
+                $response=[[
+                    'mensaje' => 'El registro no fue eliminado',
+                    'reject' => 'Registro no encontrado o no existe',
+                    'codEstado' => '204',
+                    'totalreg' => $stmt->rowCount()
+                ]];
+            }
+            return $response;
+        }
         public static function setConn($connBd){
             self::$conn = $connBd;
+        }
+        public function editData($data){
+            
+            $sql = 'UPDATE countries SET name_country=$data["name_country"] FROM countries WHERE id_country=:id_country';
+            $stmt= self::$conn->prepare($sql);
+            $stmt->bindParam(':id_country', $data['id_country'], \PDO::PARAM_INT); 
+            
+            $stmt->execute();
         }
     }
 ?>
