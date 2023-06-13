@@ -6,9 +6,9 @@
             "mysql"=> Array(
                 'driver' => 'mysql',
                 'host' => 'localhost',
-                'username' => 'root',
-                'database' => 'svagapp',
-                'password' => '',
+                'username' => 'campus',
+                'database' => 'sgavapp',
+                'password' => 'campus2023',
                 'collation' => 'utf8mb4_unicode_ci',
                 'flags' => [
                     // Turn off persistent connections

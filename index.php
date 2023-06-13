@@ -85,36 +85,33 @@ $paises=$obj->loadAllData();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
-                                        foreach ($paises as $value) {
-                                            echo "<tr>
-                                            <td>{$value['id_country']}</td>
-                                            <td>{$value['name_country']}</td>
-                                            <td><a href='scripts/paises/deletePais.php?id={$value['id_country']}'>Eliminar</a></td>
-                                            <td><a data-bs-toggle='modal' data-bs-target='#editarPais{$value['id_country']}'>Editar</a></td>
-                                            <div class='modal fade' id='editarPais{$value['id_country']}' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <?php foreach ($paises as $value):?>
+                                    <tr>      
+                                        <td><?php echo "{$value['id_country']}" ?></td>
+                                        <td><?php echo "{$value['name_country']}" ?></td>
+                                        <td><a class='btn btn-danger' <?php echo "href='scripts/paises/deletePais.php?id={$value['id_country']}'"?>>Eliminar</a></td>
+                                        <td><a class='btn btn-warning' data-bs-toggle='modal' <?php echo "data-bs-target='#editarPais{$value['id_country']}'"?>>Editar</a></td>
+                                    </tr>
+                                    <div class='modal fade' <?php echo "id='editarPais{$value['id_country']}'"?> tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>
-                                                <div class='modal-header'>
-                                                    <h1 class='modal-title fs-5' id='exampleModalLabel'>Editar {$value['name_country']}</h1>
-                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                </div>
-                                                <div class='modal-body'>
-                                                    <form action='' id='formCountryEdit'>
-                                                        <div class='input-group mb-3'>
-                                                            <span class='input-group-text '>Nombre Pais</span>
-                                                            <input type='text' aria-label='First name' class='form-control' name='name_country'value='{$value['name_country']}'>
-                                                        </div>
-                                                        <button type='submit' class='btn btn-info' id='editar'>Enviar edicion</button>
-                                                    </form>
-                                                </div>                                              
+                                                    <div class='modal-header'>
+                                                        <h1 class='modal-title fs-5' id='exampleModalLabel'><?php echo "Editar {$value['name_country']}"?></h1>
+                                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <form action='' id='formCountryEdit' <?php echo "data-id='{$value['id_country']}'"?>>
+                                                            <div class='input-group mb-3'>
+                                                                <span class='input-group-text '>Nombre Pais</span>
+                                                                <input type='text' aria-label='First name' class='form-control' id='editarInput' name='name_country' <?php echo "value='{$value['name_country']}'"?> >
+                                                            </div>
+                                                            <button type='submit' class='btn btn-info' id='editar'>Enviar edicion</button>
+                                                        </form>
+                                                    </div>                                              
                                                 </div>
                                             </div>
-                                            </div>
-                                            </tr>";
-                                        }
-                                    ?>
-                                    
+                                        </div>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

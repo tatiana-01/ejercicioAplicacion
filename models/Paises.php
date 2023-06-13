@@ -20,7 +20,6 @@
         public function loadAllData(){
             $sql = "SELECT id_country,name_country FROM countries";
             $stmt= self::$conn->prepare($sql);
-            //$stmt->setFetchMode(\PDO::FETCH_ASSOC);
             $stmt->execute();
             $countries = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $countries;
@@ -51,11 +50,10 @@
             self::$conn = $connBd;
         }
         public function editData($data){
-            
-            $sql = 'UPDATE countries SET name_country=$data["name_country"] FROM countries WHERE id_country=:id_country';
+            $sql = "UPDATE countries SET name_country=:name_country WHERE id_country=:id_country";
             $stmt= self::$conn->prepare($sql);
+            $stmt->bindParam(':name_country', $data['name_country'], \PDO::PARAM_STR); 
             $stmt->bindParam(':id_country', $data['id_country'], \PDO::PARAM_INT); 
-            
             $stmt->execute();
         }
     }
