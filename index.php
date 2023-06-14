@@ -90,20 +90,21 @@ $paises=$obj->loadAllData();
                                         <td><?php echo "{$value['id_country']}" ?></td>
                                         <td><?php echo "{$value['name_country']}" ?></td>
                                         <td><a class='btn btn-danger' <?php echo "href='scripts/paises/deletePais.php?id={$value['id_country']}'"?>>Eliminar</a></td>
-                                        <td><a class='btn btn-warning' data-bs-toggle='modal' <?php echo "data-bs-target='#editarPais{$value['id_country']}'"?>>Editar</a></td>
+                                        <td><a class='btn btn-warning' id='botonEditar' data-id='<?php echo "{$value['id_country']}" ?>' data-bs-toggle='modal' data-bs-target='#editarPais'>Editar</a></td>
                                     </tr>
-                                    <div class='modal fade' <?php echo "id='editarPais{$value['id_country']}'"?> tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    <?php endforeach; ?>
+                                    <div class='modal fade' id='editarPais' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                             <div class='modal-dialog'>
                                                 <div class='modal-content'>
                                                     <div class='modal-header'>
-                                                        <h1 class='modal-title fs-5' id='exampleModalLabel'><?php echo "Editar {$value['name_country']}"?></h1>
+                                                        <h1 class='modal-title fs-5' id='exampleModalLabel'></h1>
                                                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                                     </div>
                                                     <div class='modal-body'>
-                                                        <form action='' id='formCountryEdit' <?php echo "data-id='{$value['id_country']}'"?>>
+                                                        <form action='' id='formCountryEdit' >
                                                             <div class='input-group mb-3'>
                                                                 <span class='input-group-text '>Nombre Pais</span>
-                                                                <input type='text' aria-label='First name' class='form-control' id='editarInput' name='name_country' <?php echo "value='{$value['name_country']}'"?> >
+                                                                <input type='text' aria-label='First name' class='form-control' id='editarInput' name='name_country'  >
                                                             </div>
                                                             <button type='submit' class='btn btn-info' id='editar'>Enviar edicion</button>
                                                         </form>
@@ -111,7 +112,7 @@ $paises=$obj->loadAllData();
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
